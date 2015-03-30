@@ -1,3 +1,8 @@
+2015-03-30  Michael R. Crusoe  <mcrusoe@msu.edu>
+
+   * ChangeLog, lib/read_aligner.cc, sandbox/sweep-reads.py: fixed spelling
+   errors.
+
 2015-03-28  Kevin Murray  <spam@kdmurray.id.au>
 
    * lib/hashbits.hh: Add Hashbits::n_tables() accessor
