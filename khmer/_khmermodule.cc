@@ -2118,8 +2118,14 @@ hashbits_repartition_largest_partition(khmer_KHashbits_Object * me,
 
     CountingHash * counting = counting_o->counting;
 
-    unsigned long next_largest = subset_p->repartition_largest_partition(distance,
+    unsigned long next_largest;
+    try {
+	next_largest = subset_p->repartition_largest_partition(distance,
                                  threshold, frequency, *counting);
+    } catch (khmer_exception &e) {
+	PyErr_SetString(PyExc_RuntimeError, e.what());
+	return NULL;
+    }
 
     return PyLong_FromLong(next_largest);
 }
@@ -4693,7 +4699,15 @@ static PyObject * forward_hash(PyObject * self, PyObject * args)
         return NULL;
     }
 
-    return PyLong_FromUnsignedLongLong(_hash(kmer, ksize));
+    PyObject * hash;
+    try {
+	hash = PyLong_FromUnsignedLongLong(_hash(kmer, ksize));
+	return hash;
+    } catch (khmer_exception &e) {
+	PyErr_SetString(PyExc_RuntimeError, e.what());
+	return NULL;
+    }
+
 }
 
 static PyObject * forward_hash_no_rc(PyObject * self, PyObject * args)
