@@ -1,3 +1,10 @@
+2015-03-30  Michael R. Crusoe  <mcrusoe@msu.edu>
+
+   * khmer/{__init__.py,_khmermodule.cc},lib/{counting,hashbits,hashtable,
+   subset}.cc: catch IO errors and report them.
+   * tests/test_hashbits.py: remove write to fixed path in /tmp
+   * tests/test_scripts.py: added test for empty counting table file
+
 2015-03-28  Kevin Murray  <spam@kdmurray.id.au>
 
    * lib/hashbits.hh: Add Hashbits::n_tables() accessor
